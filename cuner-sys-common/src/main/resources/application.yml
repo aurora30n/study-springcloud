@@ -1,0 +1,8 @@
+server:
+  port: 8001
+
+swagger:
+  title: App Doc
+  description: App Doc
+  version: 1.0.0
+  enable: true
