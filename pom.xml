@@ -13,6 +13,7 @@
         <module>cuner-sys-provider</module>
         <module>cuner-sys-common</module>
         <module>cuner-sys-consumer</module>
+        <module>cuner-eureka-server</module>
     </modules>
 
     <properties>

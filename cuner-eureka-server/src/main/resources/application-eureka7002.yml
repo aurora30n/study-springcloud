@@ -1,0 +1,19 @@
+server:
+  port: 7002
+
+spring:
+  application:
+    # 应用名称。
+    # 为了便于管理和维护，需要将集群内的所有节点都设置为一样的应用名称。
+    name: eureka-server
+
+eureka:
+  instance:
+    hostname: eureka7002.com
+
+  client:
+    registerWithEureka: false
+    fetchRegistry: false
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/
+  
