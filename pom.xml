@@ -134,13 +134,21 @@
 
             <!-- SpringSession -->
             <dependency>
+                <groupId>org.springframework.session</groupId>
+                <artifactId>spring-session-bom</artifactId>
+                <version>Corn-SR2</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--<dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-starter-data-redis</artifactId>
             </dependency>
             <dependency>
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-data-redis</artifactId>
-            </dependency>
+            </dependency>-->
             <!-- end -->
 
         </dependencies>

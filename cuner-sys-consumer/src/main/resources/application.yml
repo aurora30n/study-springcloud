@@ -1,0 +1,20 @@
+server:
+  port: 8001
+
+spring:
+  session:                   # spring seesion登录
+    store-type: redis
+    timeout: PT1M
+  redis:
+    database: 1
+    host: 127.0.0.1
+    password:
+
+logging:
+  config: classpath:logback.xml
+
+swagger:
+  title: App Doc
+  description: App Doc
+  version: 1.0.0
+  enable: true

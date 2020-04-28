@@ -8,6 +8,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
+import javax.servlet.http.HttpServletRequest;
+
 @RestController
 public class UserCtrl {
 
@@ -31,6 +33,12 @@ public class UserCtrl {
     @GetMapping("/user/page/{pageNo}/{pageSize}")
     public ResData page(@PathVariable Integer pageNo, @PathVariable Integer pageSize) {
         ResponseEntity<ResData> res = this.restTemplate.getForEntity(String.format("%s/user/page/%s/%s", sysPridverUrl, pageNo, pageSize), ResData.class);
+        return res.getBody();
+    }
+
+    @PostMapping("/user/login")
+    public ResData<Object> login(HttpServletRequest request, @RequestBody User user) {
+        ResponseEntity<ResData> res = this.restTemplate.postForEntity(String.format("%s/user/login", sysPridverUrl), user, ResData.class);
         return res.getBody();
     }
 

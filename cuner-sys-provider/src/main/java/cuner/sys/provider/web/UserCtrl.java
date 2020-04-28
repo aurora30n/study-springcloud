@@ -87,14 +87,14 @@ public class UserCtrl extends BaseCtrl {
         }
     }
 
-    @PostMapping("/login")
+    @PostMapping("/user/login")
     public ResData<Object> login(HttpServletRequest request, @RequestBody User user) {
         try {
             User dbUser = this.userDao.findByUsername(user.getUsername());
             if (dbUser==null) {
                 return ResData.error("用户不存在");
             }
-            if (dbUser.getPwd().equals(user.getPwd())) {
+            if (!dbUser.getPwd().equals(user.getPwd())) {
                 return ResData.error("密码错误");
             }
             request.getSession().setAttribute("user", dbUser);
