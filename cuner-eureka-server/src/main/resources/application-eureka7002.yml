@@ -12,8 +12,8 @@ eureka:
     hostname: eureka7002.com
 
   client:
-    registerWithEureka: false
-    fetchRegistry: false
+    #registerWithEureka: false
+    #fetchRegistry: false
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/
   

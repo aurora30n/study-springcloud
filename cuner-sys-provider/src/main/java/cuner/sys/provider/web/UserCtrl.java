@@ -63,7 +63,7 @@ public class UserCtrl extends BaseCtrl {
         return null;
     }
 
-    @GetMapping("/user/login/{username}")
+    @GetMapping("/user/get/{username}")
     public ResData<User> findByUsername(@PathVariable String username) {
         try {
             User user = this.userDao.findByUsername(username);

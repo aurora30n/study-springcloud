@@ -1,45 +1,39 @@
 package cuner.sys.consumer.web;
 
 import cuner.common.req.ResData;
+import cuner.common.web.BaseCtrl;
 import cuner.sys.common.entity.User;
 import cuner.sys.common.vo.UserVo;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import cuner.sys.consumer.feignclient.UserFeignClient;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.client.RestTemplate;
 
+import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 
 @RestController
-public class UserCtrl {
+public class UserCtrl extends BaseCtrl {
 
-    @Autowired
-    private RestTemplate restTemplate;
-
-    private String sysPridverUrl = "http://localhost:9001";
+    @Resource
+    private UserFeignClient userFeignClient;
 
     @RequestMapping(value = "/user/reg", method = RequestMethod.POST)
     public ResData<Object> reg(@RequestBody UserVo userVo) {
-        ResponseEntity<ResData> res = this.restTemplate.postForEntity(String.format("%s/user/reg", sysPridverUrl), userVo, ResData.class);
-        return res.getBody();
+        return userFeignClient.reg(userVo);
     }
 
     @GetMapping("/user/get/{username}")
     public ResData<User> findByUsername(@PathVariable String username) {
-        ResponseEntity<ResData> res = this.restTemplate.getForEntity(String.format("%s/user/get/%s", sysPridverUrl, username), ResData.class);
-        return res.getBody();
+        return userFeignClient.findByUsername(username);
     }
 
     @GetMapping("/user/page/{pageNo}/{pageSize}")
     public ResData page(@PathVariable Integer pageNo, @PathVariable Integer pageSize) {
-        ResponseEntity<ResData> res = this.restTemplate.getForEntity(String.format("%s/user/page/%s/%s", sysPridverUrl, pageNo, pageSize), ResData.class);
-        return res.getBody();
+        return this.userFeignClient.page(pageNo, pageSize);
     }
 
     @PostMapping("/user/login")
     public ResData<Object> login(HttpServletRequest request, @RequestBody User user) {
-        ResponseEntity<ResData> res = this.restTemplate.postForEntity(String.format("%s/user/login", sysPridverUrl), user, ResData.class);
-        return res.getBody();
+        return this.userFeignClient.login(user);
     }
 
 }

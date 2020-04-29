@@ -9,43 +9,24 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cuner-eureka-server</artifactId>
-    <packaging>jar</packaging>
+    <artifactId>cuner-hystrix-dashboard</artifactId>
 
-    <name>cuner-eureka-server</name>
+    <name>cuner-hystrix-dashboard</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
+
     <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-web</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-tomcat</artifactId>
-            <!--<scope>provided</scope>war包-排除内置tomcat-->
-        </dependency>
+        <!-- Hystrix监控可视化 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
-        </dependency>
-
-        <!-- Actuator监控 -->
-        <dependency>
-            <groupId>org.springframework.boot</groupId>
-            <artifactId>spring-boot-starter-actuator</artifactId>
+            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
         </dependency>
         <!-- end -->
     </dependencies>
 
     <build>
-        <finalName>cuner-eureka-server</finalName>
+        <finalName>cuner-hystrix-dashboard</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

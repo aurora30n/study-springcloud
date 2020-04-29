@@ -14,6 +14,8 @@
         <module>cuner-sys-common</module>
         <module>cuner-sys-consumer</module>
         <module>cuner-eureka-server</module>
+        <module>cuner-hystrix-dashboard</module>
+        <module>cuner-hystrix-turbine</module>
     </modules>
 
     <properties>

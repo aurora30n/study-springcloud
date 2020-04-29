@@ -1,0 +1,62 @@
+server:
+  port: 9002
+
+spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/cuner?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+  application:
+    name: cuner-sys-provider # 注册到Eureka的应用名称
+
+  session:                   # spring seesion登录
+    store-type: redis
+    timeout: PT1M
+  redis:
+    database: 1
+    host: 127.0.0.1
+    password:
+
+mybatis:
+  mapperLocations: classpath:mappers/*.xml
+  config-location: classpath:mybatis-config.xml
+
+#pagehelper
+pagehelper:
+  auto-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
+
+logging:
+  config: classpath:logback.xml
+
+swagger:
+  title: App Doc
+  description: App Doc
+  version: 1.0.0
+  enable: true
+
+eureka:                # 注册到Eureka
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cuner-sys-provider9002
+    prefer-ip-address: true

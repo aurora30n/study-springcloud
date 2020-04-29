@@ -1,0 +1,2 @@
+监控地址：http://localhost:2001/hystrix
+查看对应服务地址：http://localhost:8001/hystrix.stream

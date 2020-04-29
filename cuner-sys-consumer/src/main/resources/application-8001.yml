@@ -1,0 +1,39 @@
+server:
+  port: 8001
+
+spring:
+  session:                   # spring seesion登录
+    store-type: redis
+    timeout: PT1M
+  redis:
+    database: 1
+    host: 127.0.0.1
+    password:
+
+  application:
+    name: cuner-sys-consumer # 注册到Eureka的应用名称
+
+logging:
+  config: classpath:logback.xml
+
+swagger:
+  title: App Doc
+  description: App Doc
+  version: 1.0.0
+  enable: true
+
+eureka:                # 注册到Eureka
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cuner-sys-consumer8001
+    prefer-ip-address: true
+
+ribbon:
+  eager-load:
+    enabled: true      # 启用ribbon的饥饿加载
+
+feign:
+  hystrix:
+    enabled: true      # feign启用hystrix容错
