@@ -9,30 +9,31 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cuner-hystrix-turbine</artifactId>
+    <artifactId>cuner-zuul</artifactId>
 
-    <name>cuner-hystrix-turbine</name>
+    <name>cuner-zuul</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
 
     <dependencies>
-        <!-- Hystrix监控可视化 -->
+        <!-- zuul -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-hystrix-dashboard</artifactId>
+            <artifactId>spring-cloud-starter-netflix-zuul</artifactId>
         </dependency>
         <!-- end -->
-        <!-- Hystrix集群监控可视化 -->
+        <!-- 注册eureka -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-netflix-turbine</artifactId>
+            <artifactId>spring-cloud-starter-netflix-eureka-client</artifactId>
         </dependency>
         <!-- end -->
+
     </dependencies>
 
     <build>
-        <finalName>cuner-hystrix-turbine</finalName>
+        <finalName>cuner-zuul</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

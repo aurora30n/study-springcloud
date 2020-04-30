@@ -1,0 +1,30 @@
+在默认情况下，Zuul会代理所有注册到 Eureka Server 的微服务，并且 Zuul 的路由规则如下 ：
+http://ZUUL_HOST:ZUUL_PORT/微服务在 Eureka上的serviceId/**会被转发到 serviceid对应的微服务。
+
+-------------------------------------
+actuator监控地址：
+http://test1.com:6001/actuator/hystrix.stream
+
+-------------------------------------
+管理端点地址：
+http://test1.com:6001/actuator/routes
+http://test1.com:6001/actuator/filters
+
+-------------------------------------
+访问管理端点404
+application.yml中配置：
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health,info,routes
+
+-------------------------------------
+路由配置
+http://test1.com:6001/userCsm/user/get/test

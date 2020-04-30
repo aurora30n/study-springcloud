@@ -1,0 +1,26 @@
+server:
+  port: 6001
+
+spring:
+  application:
+    name: cuner-zuul # 注册到Eureka的应用名称
+
+eureka:                # 注册到Eureka
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cuner-zuul6001
+    prefer-ip-address: true
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'     # 配置actuator监控
+
+zuul:
+  ignored-services: eureka-server,cuner-hystrix-turbine     # 使用'*'可以忽略所有服务
+  routes:
+    cuner-sys-provider: /userPrd/**
+    cuner-sys-consumer: /userCsm/**
