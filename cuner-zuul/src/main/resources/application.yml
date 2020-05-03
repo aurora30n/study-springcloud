@@ -24,3 +24,10 @@ zuul:
   routes:
     cuner-sys-provider: /userPrd/**
     cuner-sys-consumer: /userCsm/**
+  ribbon:
+    eager-load:
+      enabled: true
+  ribbon-isolation-strategy: thread
+  thread-pool:
+    use-separate-thread-pools: true
+    thread-pool-key-prefix: threadPre-

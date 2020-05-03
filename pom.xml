@@ -16,6 +16,7 @@
         <module>cuner-eureka-server</module>
         <module>cuner-hystrix-dashboard</module>
         <module>cuner-hystrix-turbine</module>
+        <module>cuner-zuul</module>
     </modules>
 
     <properties>
