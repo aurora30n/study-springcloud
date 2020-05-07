@@ -17,6 +17,7 @@
         <module>cuner-hystrix-dashboard</module>
         <module>cuner-hystrix-turbine</module>
         <module>cuner-zuul</module>
+        <module>cuner-sys-provider-elk</module>
     </modules>
 
     <properties>
@@ -153,6 +154,14 @@
                 <groupId>org.springframework.session</groupId>
                 <artifactId>spring-session-data-redis</artifactId>
             </dependency>-->
+            <!-- end -->
+
+            <!-- logstash -->
+            <dependency>
+                <groupId>net.logstash.logback</groupId>
+                <artifactId>logstash-logback-encoder</artifactId>
+                <version>6.3</version>
+            </dependency>
             <!-- end -->
 
         </dependencies>

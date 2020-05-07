@@ -1,0 +1,3 @@
+spring:
+  application:
+    name: cuner-sys-provider-elk # 注册到Eureka的应用名称

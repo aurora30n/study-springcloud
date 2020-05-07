@@ -18,21 +18,25 @@ public class UserCtrl extends BaseCtrl {
 
     @RequestMapping(value = "/user/reg", method = RequestMethod.POST)
     public ResData<Object> reg(@RequestBody UserVo userVo) {
+        log.info("Consumer->UserCtrl->reg->start");
         return userFeignClient.reg(userVo);
     }
 
     @GetMapping("/user/get/{username}")
     public ResData<User> findByUsername(@PathVariable String username) {
+        log.info("Consumer->UserCtrl->findByUsername->start");
         return userFeignClient.findByUsername(username);
     }
 
     @GetMapping("/user/page/{pageNo}/{pageSize}")
     public ResData page(@PathVariable Integer pageNo, @PathVariable Integer pageSize) {
+        log.info("Consumer->UserCtrl->page->start");
         return this.userFeignClient.page(pageNo, pageSize);
     }
 
     @PostMapping("/user/login")
     public ResData<Object> login(HttpServletRequest request, @RequestBody User user) {
+        log.info("Consumer->UserCtrl->login->start");
         return this.userFeignClient.login(user);
     }
 

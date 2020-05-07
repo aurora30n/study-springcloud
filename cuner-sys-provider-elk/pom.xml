@@ -9,9 +9,9 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cuner-sys-provider</artifactId>
+    <artifactId>cuner-sys-provider-elk</artifactId>
 
-    <name>cuner-sys-provider</name>
+    <name>cuner-sys-provider-elk</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
 
@@ -80,10 +80,17 @@
             <artifactId>spring-cloud-starter-sleuth</artifactId>
         </dependency>
         <!-- end -->
+
+        <!-- logstash -->
+        <dependency>
+            <groupId>net.logstash.logback</groupId>
+            <artifactId>logstash-logback-encoder</artifactId>
+        </dependency>
+        <!-- end -->
     </dependencies>
 
     <build>
-        <finalName>cuner-sys-provider</finalName>
+        <finalName>cuner-sys-provider-elk</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>

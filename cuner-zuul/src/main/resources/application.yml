@@ -26,8 +26,17 @@ zuul:
     cuner-sys-consumer: /userCsm/**
   ribbon:
     eager-load:
-      enabled: true
+      enabled: true   # 饥饿加载
   ribbon-isolation-strategy: thread
   thread-pool:
     use-separate-thread-pools: true
     thread-pool-key-prefix: threadPre-
+
+hystrix:
+  command:
+    # default为默认所有，可以配置指定服务名
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 5000 # 配置超时时间（单位毫秒），否则zuul回退无效
