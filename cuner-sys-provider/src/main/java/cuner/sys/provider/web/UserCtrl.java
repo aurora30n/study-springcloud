@@ -66,7 +66,7 @@ public class UserCtrl extends BaseCtrl {
 
     @GetMapping("/user/get/{username}")
     public ResData<User> findByUsername(@PathVariable String username) {
-        log.info("UserCtrl->reg->findByUsername");
+        log.info("UserCtrl->findByUsername->start");
         try {
             User user = this.userDao.findByUsername(username);
             return ResData.success(user);
@@ -78,7 +78,7 @@ public class UserCtrl extends BaseCtrl {
 
     @GetMapping("/user/page/{pageNo}/{pageSize}")
     public ResData<PageInfo> page(@PathVariable Integer pageNo, @PathVariable Integer pageSize) {
-        log.info("UserCtrl->reg->page");
+        log.info("UserCtrl->page->start");
         try {
             PageHelper.startPage(pageNo, pageSize);
             List<User> list = this.userDao.findList(new User());

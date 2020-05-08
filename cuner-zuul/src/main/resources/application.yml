@@ -24,6 +24,8 @@ zuul:
   routes:
     cuner-sys-provider: /userPrd/**
     cuner-sys-consumer: /userCsm/**
+    cuner-sys-provider-elk: /userPrdElk/**
+    cuner-sys-consumer-elk: /userCsmElk/**
   ribbon:
     eager-load:
       enabled: true   # 饥饿加载

@@ -18,6 +18,7 @@
         <module>cuner-hystrix-turbine</module>
         <module>cuner-zuul</module>
         <module>cuner-sys-provider-elk</module>
+        <module>cuner-sys-consumer-elk</module>
     </modules>
 
     <properties>

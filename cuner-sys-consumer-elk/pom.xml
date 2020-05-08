@@ -9,12 +9,11 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>cuner-sys-provider-elk</artifactId>
+    <artifactId>cuner-sys-consumer-elk</artifactId>
 
-    <name>cuner-sys-provider-elk</name>
+    <name>cuner-sys-consumer-elk</name>
     <!-- FIXME change it to the project's website -->
     <url>http://www.example.com</url>
-
 
     <dependencies>
         <dependency>
@@ -24,29 +23,8 @@
         </dependency>
         <dependency>
             <groupId>cuner</groupId>
-            <artifactId>cuner-common</artifactId>
-            <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>cuner</groupId>
             <artifactId>cuner-sys-common</artifactId>
             <version>1.0-SNAPSHOT</version>
-        </dependency>
-        <dependency>
-            <groupId>org.mybatis.spring.boot</groupId>
-            <artifactId>mybatis-spring-boot-starter</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>mysql</groupId>
-            <artifactId>mysql-connector-java</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
         </dependency>
 
         <!-- SpringSession -->
@@ -85,6 +63,20 @@
         </dependency>
         <!-- end -->
 
+        <!-- Feign -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
+        <!-- end -->
+
+        <!-- hystrix -->
+        <dependency>
+            <groupId>org.springframework.cloud</groupId>
+            <artifactId>spring-cloud-starter-netflix-hystrix</artifactId>
+        </dependency>
+        <!-- end -->
+
         <!-- Sleuth日志跟踪 -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
@@ -102,13 +94,13 @@
         <!-- Zipkin -->
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring-cloud-starter-zipkin</artifactId>
+            <artifactId>spring-cloud-sleuth-zipkin</artifactId>
         </dependency>
         <!-- end -->
     </dependencies>
 
     <build>
-        <finalName>cuner-sys-provider-elk</finalName>
+        <finalName>cuner-sys-consumer-elk</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
@@ -124,5 +116,4 @@
             </plugin>
         </plugins>
     </build>
-
 </project>
