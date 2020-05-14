@@ -1,0 +1,38 @@
+server:
+  port: 1001
+
+spring:
+  application:
+    name: cuner-hystrix-turbine # 注册到Eureka的应用名称# RabbitMQ
+  #rabbitmq:   #rabbitmq消息总线
+    #host: localhost
+    #port: 5672
+    #username: guest
+    #password: guest
+  cloud:
+    stream:
+      kafka:   #Kafka消息总线
+        binder:
+          auto-create-topics: false   # kafka binder在启动时会尝试连接本地zookeeper，如果本地没有zookeeper服务的话就会报错导致启动失败
+          brokers: localhost:9092
+          zk-nodes: localhost:2181
+      bindings:
+        turbineStreamInput:
+          destination: hystrixStreamDest  # hystrix队列名称
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'     # 配置actuator监控
+
+
+eureka:                # 注册到Eureka
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cuner-hystrix-turbine1001
+    prefer-ip-address: true
+
+

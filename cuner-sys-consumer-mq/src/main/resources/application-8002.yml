@@ -1,0 +1,62 @@
+server:
+  port: 8002
+
+spring:
+  session:                   # spring seesion登录
+    store-type: redis
+    timeout: PT1M
+  redis:
+    database: 1
+    host: 127.0.0.1
+    password:
+
+  application:
+    name: cuner-sys-consumer-mq # 注册到Eureka的应用名称
+
+  zipkin:  #整合zipkin
+    base-url: http://localhost:9411
+  sleuth:  #整合zipkin
+    sampler:
+      probability: 1.0
+
+  #rabbitmq:   #rabbitmq消息总线
+    #host: localhost
+    #port: 5672
+    #username: guest
+    #password: guest
+  cloud:
+    stream:
+      kafka:   #Kafka消息总线
+        binder:
+          auto-create-topics: false   # kafka binder在启动时会尝试连接本地zookeeper，如果本地没有zookeeper服务的话就会报错导致启动失败
+          brokers: localhost:9092
+          zk-nodes: localhost:2181
+
+logging:
+  config: classpath:logback-spring.xml
+  level:
+    root: INFO
+    org.springframework.cloud.sleuth: DEBUG
+    # org.springframework.web.servlet.DispatcherServlet: DEBUG
+
+swagger:
+  title: App Doc
+  description: App Doc
+  version: 1.0.0
+  enable: true
+
+eureka:                # 注册到Eureka
+  client:
+    service-url:
+      defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
+  instance:
+    instance-id: cuner-sys-consumer8002
+    prefer-ip-address: true
+
+ribbon:
+  eager-load:
+    enabled: true      # 启用ribbon的饥饿加载
+
+feign:
+  hystrix:
+    enabled: true      # feign启用hystrix容错

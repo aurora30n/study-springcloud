@@ -19,6 +19,8 @@
         <module>cuner-zuul</module>
         <module>cuner-sys-provider-elk</module>
         <module>cuner-sys-consumer-elk</module>
+        <module>cuner-sys-consumer-mq</module>
+        <module>cuner-hystrix-turbine-mq</module>
     </modules>
 
     <properties>
@@ -32,7 +34,7 @@
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
-                <version>Hoxton.SR3</version>
+                <version>Hoxton.SR4</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -41,7 +43,7 @@
             <dependency>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-dependencies</artifactId>
-                <version>2.2.1.RELEASE</version>
+                <version>2.2.5.RELEASE</version>
                 <type>pom</type>
                 <scope>import</scope>
                 <!-- war包时移除内置Tomcat
