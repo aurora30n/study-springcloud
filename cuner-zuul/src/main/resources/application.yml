@@ -27,6 +27,7 @@ zuul:
     cuner-sys-provider-elk: /userPrdElk/**
     cuner-sys-consumer-elk: /userCsmElk/**
     cuner-sys-consumer-mq: /userCsmMq/**
+    cuner-sys-provider-mq: /userPrdMq/**
   ribbon:
     eager-load:
       enabled: true   # 饥饿加载

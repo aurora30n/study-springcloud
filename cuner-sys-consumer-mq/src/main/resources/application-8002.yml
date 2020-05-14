@@ -14,7 +14,10 @@ spring:
     name: cuner-sys-consumer-mq # 注册到Eureka的应用名称
 
   zipkin:  #整合zipkin
-    base-url: http://localhost:9411
+    sender:
+      type: kafka
+    kafka:
+      topic: zipkin
   sleuth:  #整合zipkin
     sampler:
       probability: 1.0
@@ -31,6 +34,9 @@ spring:
           auto-create-topics: false   # kafka binder在启动时会尝试连接本地zookeeper，如果本地没有zookeeper服务的话就会报错导致启动失败
           brokers: localhost:9092
           zk-nodes: localhost:2181
+      bindings:
+        hystrixStreamOutput:
+          destination: hystrixStreamDest  # hystrix队列名称
 
 logging:
   config: classpath:logback-spring.xml
@@ -60,3 +66,9 @@ ribbon:
 feign:
   hystrix:
     enabled: true      # feign启用hystrix容错
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'     # 配置actuator监控

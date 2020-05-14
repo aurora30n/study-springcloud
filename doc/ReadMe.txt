@@ -14,8 +14,14 @@ Kibana
 Logstash
 启动命令：./bin/logstash.bat -f config/logstash-cuner.conf
 
+zipkin
+访问地址：http://localhost:9411
+
 
 发送Kafka：
-turbine监控信息
-logstash业务日期
-zipkin跟踪日志
+hystrix、turbine监控信息：destination(Topic)=hystrixStreamDest
+zipkin跟踪日志：destination(Topic)=zipkin
+
+日志整合：
+APP-->zipkin-->kafka-->zipkin-->elastic-->kibana
+启动顺序：kafka-->elastic-->kibana-->zipkin

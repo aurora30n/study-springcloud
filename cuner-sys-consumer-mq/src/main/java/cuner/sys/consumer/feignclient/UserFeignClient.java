@@ -6,7 +6,7 @@ import cuner.sys.common.vo.UserVo;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.*;
 
-@FeignClient(value = "cuner-sys-provider-elk", fallbackFactory=UserFeignClientFallBack.class)
+@FeignClient(value = "cuner-sys-provider-mq", fallbackFactory=UserFeignClientFallBack.class)
 public interface UserFeignClient {
 
     @RequestMapping(value = "/user/reg", method = RequestMethod.POST)

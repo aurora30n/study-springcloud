@@ -20,7 +20,9 @@
         <module>cuner-sys-provider-elk</module>
         <module>cuner-sys-consumer-elk</module>
         <module>cuner-sys-consumer-mq</module>
+        <module>cuner-sys-provider-mq</module>
         <module>cuner-hystrix-turbine-mq</module>
+        <module>cuner-zipkin</module>
     </modules>
 
     <properties>

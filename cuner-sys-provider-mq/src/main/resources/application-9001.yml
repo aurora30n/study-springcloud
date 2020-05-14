@@ -1,7 +1,30 @@
 server:
-  port: 8001
+  port: 9001
 
 spring:
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://localhost:3306/cuner?useUnicode=true&characterEncoding=utf-8&useSSL=true&serverTimezone=UTC
+    driver-class-name: com.mysql.jdbc.Driver
+    type: com.alibaba.druid.pool.DruidDataSource
+    filters: stat
+    maxActive: 20
+    initialSize: 1
+    maxWait: 60000
+    minIdle: 1
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: select 'x'
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    poolPreparedStatements: true
+    maxOpenPreparedStatements: 20
+
+  application:
+    name: cuner-sys-provider-mq # 注册到Eureka的应用名称
+
   session:                   # spring seesion登录
     store-type: redis
     timeout: PT1M
@@ -9,9 +32,6 @@ spring:
     database: 1
     host: 127.0.0.1
     password:
-
-  application:
-    name: cuner-sys-consumer-mq # 注册到Eureka的应用名称
 
   zipkin:  #整合zipkin
     sender:
@@ -22,11 +42,6 @@ spring:
     sampler:
       probability: 1.0
 
-  #rabbitmq:   #rabbitmq消息总线
-    #host: localhost
-    #port: 5672
-    #username: guest
-    #password: guest
   cloud:
     stream:
       kafka:   #Kafka消息总线
@@ -37,6 +52,17 @@ spring:
       bindings:
         hystrixStreamOutput:
           destination: hystrixStreamDest  # hystrix队列名称
+
+mybatis:
+  mapperLocations: classpath:mappers/*.xml
+  config-location: classpath:mybatis-config.xml
+
+#pagehelper
+pagehelper:
+  auto-dialect: mysql
+  reasonable: true
+  support-methods-arguments: true
+  params: countSql
 
 logging:
   config: classpath:logback-spring.xml
@@ -56,16 +82,8 @@ eureka:                # 注册到Eureka
     service-url:
       defaultZone: http://eureka7001.com:7001/eureka/,http://eureka7002.com:7002/eureka/
   instance:
-    instance-id: cuner-sys-consumer8001
+    instance-id: cuner-sys-provider9001
     prefer-ip-address: true
-
-ribbon:
-  eager-load:
-    enabled: true      # 启用ribbon的饥饿加载
-
-feign:
-  hystrix:
-    enabled: true      # feign启用hystrix容错
 
 management:
   endpoints:
