@@ -1,0 +1,5 @@
+# db config
+db:
+  ip: localhost
+  username: root
+  password: 123456
