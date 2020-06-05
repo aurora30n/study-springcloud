@@ -25,6 +25,7 @@
         <module>cuner-zipkin</module>
         <module>cuner-nacos</module>
         <module>cuner-nacos-cloud</module>
+        <module>cuner-oauth2-authserver</module>
     </modules>
 
     <properties>

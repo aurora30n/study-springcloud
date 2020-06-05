@@ -25,3 +25,8 @@ zipkin跟踪日志：destination(Topic)=zipkin
 日志整合：
 APP-->zipkin-->kafka-->zipkin-->elastic-->kibana
 启动顺序：kafka-->elastic-->kibana-->zipkin
+
+
+cuner-oauth2-authserver
+端口:3001
+Spring Security OAuth2.0
