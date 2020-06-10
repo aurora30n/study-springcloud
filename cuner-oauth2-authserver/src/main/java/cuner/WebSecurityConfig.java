@@ -2,6 +2,7 @@ package cuner;
 
 import org.springframework.boot.autoconfigure.batch.BatchDataSource;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
@@ -33,7 +34,19 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
      */
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        /*http.authorizeRequests()
+                .antMatchers(HttpMethod.OPTIONS,"/oauth/**", "/actuator/**") // 放行options方法
+                .permitAll()
+                .and().httpBasic() // Basic提交，否则/oauth/authorize报403错误
+                .and().csrf().disable(); // 关闭跨域保护*/
+
         http.authorizeRequests()
-                .antMatchers("/oauth/**").permitAll();
+                .antMatchers(HttpMethod.OPTIONS)
+                .permitAll() // 放行options方法
+                .antMatchers("/oauth/**", "/actuator/**").permitAll()
+                .anyRequest().authenticated()
+                .and().formLogin().permitAll()
+                .and().httpBasic() // Basic提交，否则/oauth/authorize报403错误
+                .and().csrf().disable(); // 关闭跨域保护
     }
 }

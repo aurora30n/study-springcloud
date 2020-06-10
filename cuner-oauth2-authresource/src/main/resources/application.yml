@@ -1,0 +1,26 @@
+server:
+  port: 3002
+
+spring:
+  application:
+    name: cuner-oauth2-authresource
+
+security:
+  oauth2:
+    client:
+      client-id: cuner-oauth2-authresource
+      client-secret: 123456
+      user-authorization-uri: http://localhost:3001/oauth/authorize
+      access-token-uri: http://localhost:3001/oauth/token
+    resource:
+      id: cuner-oauth2-authresource
+      user-info-uri: user-info
+    authorization:
+      check-token-access: http://localhost:3001/oauth/check_token
+
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: '*'     # \u914D\u7F6Eactuator\u76D1\u63A7

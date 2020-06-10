@@ -197,8 +197,3 @@ Icon
 !wrapper/*.jar
 
 !**/wrapper/*.jar
-
-# Springboot
-HELP.md
-mvnw
-mvnw.cmd

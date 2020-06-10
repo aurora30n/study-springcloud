@@ -26,6 +26,10 @@
         <module>cuner-nacos</module>
         <module>cuner-nacos-cloud</module>
         <module>cuner-oauth2-authserver</module>
+        <module>cuner-oauth2-sso-client1</module>
+        <module>cuner-oauth2-sso-client2</module>
+        <module>cuner-oauth2-authresource</module>
+        <module>cuner-oauth2-thirdapp</module>
     </modules>
 
     <properties>

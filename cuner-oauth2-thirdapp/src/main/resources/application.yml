@@ -1,0 +1,15 @@
+server:
+  port: 3003
+
+spring:
+  application:
+    name: cuner-oauth2-thirdapp
+  freemarker:
+    #\u8BBE\u7F6E\u7F16\u7801\u683C\u5F0F
+    charset: utf-8
+    #\u8BBE\u7F6E\u6587\u4EF6\u540E\u7F00
+    suffix: .ftl
+    #\u8BBE\u7F6Eftl\u6587\u4EF6\u8DEF\u5F84
+    template-loader-path: classpath:/templates
+    #\u5173\u95ED\u7F13\u5B58\uFF0C\u53CA\u65F6\u5237\u65B0\uFF0C\u4E0A\u7EBF\u751F\u4EA7\u73AF\u5883\u9700\u8981\u6539\u4E3Atrue
+    cache: false

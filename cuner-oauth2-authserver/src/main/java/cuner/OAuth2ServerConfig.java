@@ -35,7 +35,7 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     @Autowired
     private TokenStore redisTokenStore;
 
-    @Resource
+    @Autowired
     DataSource dataSource;
 
     /**

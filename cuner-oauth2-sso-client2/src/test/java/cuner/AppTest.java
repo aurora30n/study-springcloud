@@ -3,10 +3,9 @@ package cuner;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 /**
- * Unit test for simple AuthServerApp.
+ * Unit test for simple MircoSvc1App.
  */
 public class AppTest 
 {
@@ -16,8 +15,6 @@ public class AppTest
     @Test
     public void shouldAnswerWithTrue()
     {
-        String pwd = new BCryptPasswordEncoder().encode("123456");
-        System.out.println(pwd);
         assertTrue( true );
     }
 }

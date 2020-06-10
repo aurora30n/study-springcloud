@@ -1,0 +1,21 @@
+server:
+  port: 3004
+  servlet:
+    session:
+      cookie:
+        name: client1 # 必须设置，否则单点登录时一直跳转到认证服务的login页
+
+spring:
+  application:
+    name: cuner-oauth2-sso-client1
+
+security:
+  oauth2:
+    client:
+      client-id: cuner-oauth2-authresource
+      client-secret: 123456
+      user-authorization-uri: http://localhost:3001/oauth/authorize
+      access-token-uri: http://localhost:3001/oauth/token
+    resource:
+      user-info-uri: http://localhost:3002/getCurUser
+

@@ -37,6 +37,14 @@ spring:
     poolPreparedStatements: true
     maxOpenPreparedStatements: 20
 
+
+mybatis-plus:
+  global-config:
+    db-config:
+      id-type: none
+  mapper-locations: classpath:mappers/*.xml
+  config-location: classpath:mybatis-config.xml
+
 management:
   endpoints:
     web:

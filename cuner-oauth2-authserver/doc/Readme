@@ -1,0 +1,34 @@
+
+模式介绍https://www.cnblogs.com/wuzhiwei549/p/9113452.html
+
+1、客户端模式
+http://localhost:3001/oauth/token?grant_type=client_credentials&client_id=user-client&client_secret=123456
+
+2、授权码模式
+样例：
+
+GET  http://localhost:3001/oauth/authorize?response_type=code&client_id=user-client&redirect_uri=http://www.baidu.com&scope=all&state=userId
+
+redirect_uri：表示重定向URL编码后的URI（第三方服务器）
+state：表示客户端的当前状态，可以指定任意值，认证服务器会原封不动地返回这个值。（常用：用户标识）
+
+重定向：
+www.baidu.com?code=LtXS0X&state=userId
+
+获取code
+GET http://localhost:3001/oauth/token?grant_type=authorization_code&redirect_uri=http://www.baidu.com&scope=all&state=normal&code=LtXS0X
+
+结果
+{
+    "access_token": "4c2da7e4-eef1-4c6c-9d1e-ce4f361ea633",
+    "token_type": "bearer",
+    "refresh_token": "71ae4a36-9b58-4f93-ba20-8f55cc8eae03",
+    "expires_in": 1981,
+    "scope": "all"
+}
+
+3、密码模式
+http://localhost:3001/oauth/token?username=admin&password=123456&grant_type=password&client_id=user-client&client_secret=123456
+
+4、简化模式
+
