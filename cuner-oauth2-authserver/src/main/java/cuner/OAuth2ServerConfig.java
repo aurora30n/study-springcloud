@@ -3,6 +3,7 @@ package cuner;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.core.token.TokenService;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.oauth2.config.annotation.builders.JdbcClientDetailsServiceBuilder;
@@ -11,6 +12,8 @@ import org.springframework.security.oauth2.config.annotation.web.configuration.A
 import org.springframework.security.oauth2.config.annotation.web.configuration.EnableAuthorizationServer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerEndpointsConfigurer;
 import org.springframework.security.oauth2.config.annotation.web.configurers.AuthorizationServerSecurityConfigurer;
+import org.springframework.security.oauth2.provider.token.AuthorizationServerTokenServices;
+import org.springframework.security.oauth2.provider.token.DefaultTokenServices;
 import org.springframework.security.oauth2.provider.token.TokenStore;
 
 import javax.annotation.Resource;
@@ -36,6 +39,9 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
     private TokenStore redisTokenStore;
 
     @Autowired
+    private DefaultTokenServices redisTokenService;
+
+    @Autowired
     DataSource dataSource;
 
     /**
@@ -49,7 +55,9 @@ public class OAuth2ServerConfig extends AuthorizationServerConfigurerAdapter {
          */
         endpoints.authenticationManager(authenticationManager) // 调用此方法才能支持password模式
                 .userDetailsService(customUserDetailsService) // 设置用户验证服务
-                .tokenStore(redisTokenStore); // 指定 token 的存储方式
+                // 指定 token 的存储方式
+                .tokenServices(redisTokenService)
+                .tokenStore(redisTokenStore);
 
     }
 
